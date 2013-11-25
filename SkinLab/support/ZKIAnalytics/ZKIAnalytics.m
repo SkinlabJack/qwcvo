@@ -32,6 +32,10 @@
         _appVersion      = version;
 //        _number          = CTSettingCopyMyPhoneNumber();
         
+        #ifdef DEBUG
+        DLog(@"ZKIAnalytics DEBUG")
+        #else
+        
         if ([DataCenter isFileExist:@"userActionArray.plist"]) {
             
             NSArray *array = [DataCenter readArrayFromFile:@"userActionArray.plist"];
@@ -70,6 +74,8 @@
             }
             
         }
+        
+        #endif
         
     }
     return self;
@@ -206,7 +212,7 @@
 + (void)beginUploadData {
     
 #ifdef DEBUG
-    DLog(@"ZKIAnalytics 关闭状态")
+    DLog(@"ZKIAnalytics DEBUG")
     [[ZKIAnalytics shareAnalytics] getUpLoadDataString];
     [[ZKIAnalytics shareAnalytics].userActionArray removeAllObjects];
 #else
