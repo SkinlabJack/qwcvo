@@ -2888,11 +2888,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"${SRCROOT}/SkinLab/Support/libWeiboSDK",
-					"${SRCROOT}/SkinLab/Support/ZBarSDK",
 					"${SRCROOT}/SkinLab/Support/analytics",
 					"${SRCROOT}/SkinLab/Support/XMPP/Vendor/libidn",
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/ZBarSDK,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/QRCode,
+					"${SRCROOT}/SkinLab/Support/QRCode",
 				);
 				OTHER_LDFLAGS = ObjC;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -2921,11 +2919,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"${SRCROOT}/SkinLab/Support/libWeiboSDK",
-					"${SRCROOT}/SkinLab/Support/ZBarSDK",
 					"${SRCROOT}/SkinLab/Support/analytics",
 					"${SRCROOT}/SkinLab/Support/XMPP/Vendor/libidn",
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/ZBarSDK,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/QRCode,
+					"${SRCROOT}/SkinLab/Support/QRCode",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
