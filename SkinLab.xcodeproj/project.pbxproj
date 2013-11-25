@@ -2891,10 +2891,10 @@
 				INFOPLIST_FILE = "SkinLab/SkinLab-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/libWeiboSDK,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/ZBarSDK,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/analytics,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/XMPP/Vendor/libidn,
+					"${SRCROOT}/SkinLab/Support/libWeiboSDK",
+					"${SRCROOT}/SkinLab/Support/ZBarSDK",
+					"${SRCROOT}/SkinLab/Support/analytics",
+					"${SRCROOT}/SkinLab/Support/XMPP/Vendor/libidn",
 				);
 				OTHER_LDFLAGS = ObjC;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -2922,10 +2922,10 @@
 				INFOPLIST_FILE = "SkinLab/SkinLab-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/libWeiboSDK,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/ZBarSDK,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/analytics,
-					/Users/thewingofthesky/Desktop/SkinLab/SkinLab/Support/XMPP/Vendor/libidn,
+					"${SRCROOT}/SkinLab/Support/libWeiboSDK",
+					"${SRCROOT}/SkinLab/Support/ZBarSDK",
+					"${SRCROOT}/SkinLab/Support/analytics",
+					"${SRCROOT}/SkinLab/Support/XMPP/Vendor/libidn",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
