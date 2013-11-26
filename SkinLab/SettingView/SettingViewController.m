@@ -298,6 +298,12 @@
                 MFMailComposeViewController * mailView = [[MFMailComposeViewController alloc] init];
                 mailView.mailComposeDelegate = self;
                 
+                if ([DataCenter isiOS7]) {
+                    [mailView.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
+                }else{
+                    [mailView.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
+                }
+                
                 //Set the subject
                 [mailView setSubject:[NSString stringWithFormat:@"问题反馈-SkinLab-V%@-%@", [DataCenter shareData].appVersion, [DataCenter shareData].appMarket]];
                 [mailView setToRecipients:@[@"tryseason@gmail.com"]];

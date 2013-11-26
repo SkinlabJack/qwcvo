@@ -88,7 +88,7 @@
         [self.drawerController setShowsShadow:YES];
     }
     
-    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+//    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
     [self.drawerController setMaximumLeftDrawerWidth:260];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
