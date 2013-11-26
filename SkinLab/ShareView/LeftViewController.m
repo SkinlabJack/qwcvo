@@ -36,7 +36,7 @@
     self.tableView.contentInset    = UIEdgeInsetsMake(130, 0, 0, 0);
     self.tableView.showsVerticalScrollIndicator = NO;
     
-    if (![DataCenter isiOS7]) {
+    if (![AppHelper shareHelper].appCenter.isiOS7) {
         self.tableView.backgroundView = [[UIView alloc] init];
     }
     
@@ -190,7 +190,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if([DataCenter isiOS7]){
+    if([AppHelper shareHelper].appCenter.isiOS7){
         return 50;
     }
     else {

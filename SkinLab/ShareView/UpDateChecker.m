@@ -10,12 +10,11 @@
 
 @implementation UpDateChecker
 
-
 - (id)init
 {
     self = [super init];
     if (self) {
-        
+        _isNeedUpDateWhenQuite = NO;
     }
     return self;
 }
@@ -23,6 +22,26 @@
 - (void)startChecker:(NSString *)appID{
     _appID = appID;
     [self httpRequestCheckUpData];
+}
+
+- (void)upDateWhenQuite {
+    if (self.isNeedUpDateWhenQuite) {
+        
+        UILocalNotification * localNotification = [[UILocalNotification alloc] init];
+        if (localNotification) {
+            localNotification.fireDate    = [NSDate dateWithTimeIntervalSinceNow:1];
+            localNotification.timeZone    = [NSTimeZone defaultTimeZone];
+            localNotification.alertBody   = @"升级SkinLab到最新版本。";
+            localNotification.alertAction = @"升级";
+            localNotification.soundName   = @"";
+            
+            UIApplication *application = [UIApplication sharedApplication];
+            [application scheduleLocalNotification:localNotification];
+        }
+        
+        self.isNeedUpDateWhenQuite = NO;
+    }
+    
 }
 
 - (void)httpRequestCheckUpData{
@@ -80,25 +99,6 @@
                                       }];
 }
 
-- (void)upDateWhenQuite {
-    if (self.isNeedUpDateWhenQuite) {
-        
-        UILocalNotification * localNotification = [[UILocalNotification alloc] init];
-        if (localNotification) {
-            localNotification.fireDate    = [NSDate dateWithTimeIntervalSinceNow:1];
-            localNotification.timeZone    = [NSTimeZone defaultTimeZone];
-            localNotification.alertBody   = @"升级SkinLab到最新版本。";
-            localNotification.alertAction = @"升级";
-            localNotification.soundName   = @"";
-            
-            UIApplication *application = [UIApplication sharedApplication];
-            [application scheduleLocalNotification:localNotification];
-        }
-        
-        self.isNeedUpDateWhenQuite = NO;
-    }
-
-}
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

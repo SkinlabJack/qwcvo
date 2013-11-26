@@ -12,12 +12,11 @@
 @interface UpDateChecker : NSObject <UIAlertViewDelegate>{
     NSString *_newVersion;
     NSString *_appID;
-    
 }
 
 @property BOOL isNeedUpDateWhenQuite;
 
-- (void)startChecker:(NSString *)appID;
 - (void)upDateWhenQuite;
+- (void)startChecker:(NSString *)appID;
 
 @end

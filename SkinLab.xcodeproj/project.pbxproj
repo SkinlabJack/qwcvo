@@ -1054,7 +1054,7 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
-		C929DDF516A8034F0053D1E4 /* DataCenter */ = {
+		C929DDF516A8034F0053D1E4 /* AppHelper */ = {
 			isa = PBXGroup;
 			children = (
 				C929DDFA16A8034F0053D1E4 /* SkinLab.h */,
@@ -1071,6 +1071,7 @@
 				C9FAED93184487F70082AAAA /* UserCenter.h */,
 				C9FAED94184487F70082AAAA /* UserCenter.m */,
 			);
+			name = AppHelper;
 			path = DataCenter;
 			sourceTree = "<group>";
 		};
@@ -1223,7 +1224,7 @@
 				C956B6EB16A7A295003F2F3B /* AppDelegate.m */,
 				C98668C8183B0F8F00288374 /* MainView */,
 				C9C338EE181E42EE00DAFC99 /* VIPSystem */,
-				C929DDF516A8034F0053D1E4 /* DataCenter */,
+				C929DDF516A8034F0053D1E4 /* AppHelper */,
 				C942BB8116AF9625006939C0 /* ShareView */,
 				C9E7E5B416E6EB8B005FA369 /* ProductView */,
 				C96B5FD616AE3B180054423F /* Questionnaire */,

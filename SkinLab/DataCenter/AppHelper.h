@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "AppCenter.h"
 #import "UserCenter.h"
-#import "UpDateChecker.h"
 #import "AppStoreComment.h"
+//#import "UpDateChecker.h"
 
 @interface AppHelper : NSObject
 
 @property (strong, nonatomic) AppCenter       *appCenter;
 @property (strong, nonatomic) UserCenter      *userCenter;
-@property (strong, nonatomic) UpDateChecker   *upDateChecker;
 @property (strong, nonatomic) AppStoreComment *appStoreComment;
+//@property (strong, nonatomic) UpDateChecker   *upDateChecker;
 
 + (AppHelper *)shareHelper;
 

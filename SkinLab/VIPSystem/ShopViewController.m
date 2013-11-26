@@ -138,7 +138,7 @@
             OrderDetailViewController *orderDetailViewController = [[OrderDetailViewController alloc] init];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:orderDetailViewController];
             
-            if ([DataCenter isiOS7]) {
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
             }else{
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];

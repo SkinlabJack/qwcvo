@@ -19,19 +19,12 @@
         NSDictionary *infoDict =[[NSBundle mainBundle] infoDictionary];
         NSString *version = infoDict[@"CFBundleVersion"];
         
-        _upDataWhenQuite     = NO;
         _appVersion          = version;
         _appMarket           = @"AppStore";
         _deviceID            = [OpenUDID value];
         _deviceSystemVersion = [[[UIDevice currentDevice] systemVersion] intValue];
         
         DLog(@"用户识别码 = %@", _deviceID)
-        
-        if ([[[UIDevice currentDevice] systemVersion] intValue] == 7) {
-            _isiOS7 = YES;
-        }else{
-            _isiOS7 = NO;
-        }
         
         if (kScreenHeight > 480) {
             _deviceType = DeviceTypeiPhone5;
@@ -63,10 +56,6 @@
     }
     
     return dataCenter;
-}
-
-+ (BOOL)isiOS7 {
-    return [DataCenter shareData].isiOS7;
 }
 
 + (BOOL)isLogin {

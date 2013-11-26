@@ -298,7 +298,7 @@
                 MFMailComposeViewController * mailView = [[MFMailComposeViewController alloc] init];
                 mailView.mailComposeDelegate = self;
                 
-                if ([DataCenter isiOS7]) {
+                if ([AppHelper shareHelper].appCenter.isiOS7) {
                     [mailView.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
                 }else{
                     [mailView.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];

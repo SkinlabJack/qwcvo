@@ -10,7 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SkinLabHttpClient.h"
 #import "OpenUDID.h"
-#import "AppCenter.h"
 
 typedef enum{
     DeviceTypeiPhone5,
@@ -25,8 +24,6 @@ typedef enum{
 
 
 @property BOOL pushOn;
-@property BOOL upDataWhenQuite;
-@property BOOL isiOS7;
 @property BOOL isLogin;
 @property BOOL hasAddress;
 
@@ -48,7 +45,6 @@ typedef enum{
 
 + (DataCenter *)shareData;
 
-+ (BOOL)isiOS7;
 + (BOOL)isLogin;
 
 + (NSData *)cleanNullOfString:(NSString *)string;

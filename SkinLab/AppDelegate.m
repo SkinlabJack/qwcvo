@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "UpDateChecker.h"
-#import "AppStoreComment.h"
 #import "SkinLabHttpClient.h"
 
 
@@ -38,7 +36,7 @@
     }
 
 //    版本检测
-    [[AppHelper shareHelper].upDateChecker startChecker:@"663805293"];
+//    [[AppHelper shareHelper].upDateChecker startChecker:@"663805293"];
     
 //    评价应用
     [[AppHelper shareHelper].appStoreComment startAppStoreComment:@"663805293" withDelay:1];
@@ -70,7 +68,7 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tempMainViewController];
     self.mainViewController = navigationController;
     
-    if ([DataCenter isiOS7]) {
+    if ([AppHelper shareHelper].appCenter.isiOS7) {
         LeftViewController * leftDrawer = [[LeftViewController alloc] init];
         leftDrawer.view.backgroundColor = GrayColor;
         UINavigationController *leftNavigationController = [[UINavigationController alloc] initWithRootViewController:leftDrawer];
@@ -92,7 +90,7 @@
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [self.drawerController setDrawerVisualStateBlock:[MMDrawerVisualState slideAndScaleVisualStateBlock]];
     
-    if ([DataCenter isiOS7]) {
+    if ([AppHelper shareHelper].appCenter.isiOS7) {
         [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
     }else{
         [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
@@ -125,7 +123,7 @@
 {
     [ZKIAnalytics addNewAction:ZKIAnalyticsTypeClose withSubType:nil withKey:nil];
     
-    [[AppHelper shareHelper].upDateChecker upDateWhenQuite];
+//    [[AppHelper shareHelper].upDateChecker upDateWhenQuite];
     
     [ZKIAnalytics beginUploadData];
 }
@@ -245,7 +243,7 @@
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tempViewController];
             self.shopViewController = navigationController;
             
-            if ([DataCenter isiOS7]) {
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
             }else{
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
@@ -260,7 +258,7 @@
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tempMainViewController];
             self.userCenterViewController = navigationController;
             
-            if ([DataCenter isiOS7]) {
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
             }else{
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
@@ -275,7 +273,7 @@
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tempViewController];
             self.consultViewController = navigationController;
             
-            if ([DataCenter isiOS7]) {
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
             }else{
                 [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
@@ -289,7 +287,7 @@
         SettingViewController *settingViewController = [[SettingViewController alloc] init];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
         
-        if ([DataCenter isiOS7]) {
+        if ([AppHelper shareHelper].appCenter.isiOS7) {
             [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
         }else{
             [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
@@ -302,7 +300,7 @@
         InviteViewController *settingViewController = [[InviteViewController alloc] init];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
         
-        if ([DataCenter isiOS7]) {
+        if ([AppHelper shareHelper].appCenter.isiOS7) {
             [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
         }else{
             [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
@@ -315,7 +313,7 @@
         VIPMainViewController *vipMainViewController = [[VIPMainViewController alloc] init];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vipMainViewController];
         
-        if ([DataCenter isiOS7]) {
+        if ([AppHelper shareHelper].appCenter.isiOS7) {
             [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
         }else{
             [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];

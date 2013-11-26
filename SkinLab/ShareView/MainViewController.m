@@ -205,7 +205,7 @@
             questionnaireViewController.delegate = blockSelf;
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:questionnaireViewController];
             
-            if ([DataCenter isiOS7]) {
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
                 [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
             }else{
                 [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];

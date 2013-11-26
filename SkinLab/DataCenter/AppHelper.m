@@ -16,7 +16,7 @@
         
         _appCenter       = [[AppCenter alloc] init];
         _userCenter      = [[UserCenter alloc] init];
-        _upDateChecker   = [[UpDateChecker alloc] init];
+//        _upDateChecker   = [[UpDateChecker alloc] init];
         _appStoreComment = [[AppStoreComment alloc] init];
         
     }

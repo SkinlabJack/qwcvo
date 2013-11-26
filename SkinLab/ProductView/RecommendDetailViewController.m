@@ -65,7 +65,7 @@
     if ([DataCenter shareData].deviceType == DeviceTypeiPhone4 && self.recommendDetailViewMode == RecommendDetailViewModeWithoutNav) {
         
         float y = 0;
-        if ([DataCenter isiOS7]) {
+        if ([AppHelper shareHelper].appCenter.isiOS7) {
             y = 25;
         }else{
             y = 7.5;
@@ -83,7 +83,7 @@
     
     }
     
-    if (![DataCenter isiOS7]) {
+    if (![AppHelper shareHelper].appCenter.isiOS7) {
         UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
         [leftButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
         [leftButton addTarget:self action:@selector(leftBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -111,7 +111,7 @@
             UIScrollView *tempScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - KSHeight)];
             self.scrollView = tempScrollView;
             
-            if ([DataCenter isiOS7]) {
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
                 self.scrollView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
             }else{
                 self.scrollView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - KSHeight);
@@ -165,7 +165,7 @@
         _infoViewHeight = InfoHeight + 50;
     }
     
-    if ([DataCenter isiOS7] && [DataCenter shareData].deviceType == DeviceTypeiPhone4 && self.recommendDetailViewMode != RecommendDetailViewModeWithNav) {
+    if ([AppHelper shareHelper].appCenter.isiOS7 && [DataCenter shareData].deviceType == DeviceTypeiPhone4 && self.recommendDetailViewMode != RecommendDetailViewModeWithNav) {
         UIView *state = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, KSHeight)];
         state.backgroundColor = GreenColor;
         [self.view addSubview:state];

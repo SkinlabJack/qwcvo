@@ -72,7 +72,7 @@
 
 - (void)setupNavigationController{
 
-    if (![DataCenter isiOS7]) {
+    if (![AppHelper shareHelper].appCenter.isiOS7) {
         UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
         [leftButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
         [leftButton addTarget:self action:@selector(leftBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

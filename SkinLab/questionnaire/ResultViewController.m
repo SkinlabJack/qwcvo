@@ -92,7 +92,7 @@
 
 - (void)setupNavigationController{
     
-    if (![DataCenter isiOS7]) {
+    if (![AppHelper shareHelper].appCenter.isiOS7) {
         UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
         [leftButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
         [leftButton addTarget:self action:@selector(leftBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -380,7 +380,7 @@ NSInteger nameSort(id user1, id user2, void *context)
     questionnaireViewController.delegate = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:questionnaireViewController];
     
-    if ([DataCenter isiOS7]) {
+    if ([AppHelper shareHelper].appCenter.isiOS7) {
         [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
     }else{
         [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
