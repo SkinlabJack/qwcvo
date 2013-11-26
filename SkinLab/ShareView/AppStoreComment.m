@@ -40,6 +40,8 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"Commented"];
         [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:self.firstLaunchDateWithVersion];
     }
+    
+    DLog(@"评论推送启动")
 }
 
 

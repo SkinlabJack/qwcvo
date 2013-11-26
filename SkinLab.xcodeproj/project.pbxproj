@@ -58,6 +58,7 @@
 		C93C6FBF1712975600175DB6 /* SettingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C93C6FBE1712975600175DB6 /* SettingViewCell.m */; };
 		C942BB9116AF9625006939C0 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = C942BB8316AF9625006939C0 /* ActivityView.m */; };
 		C942BB9B16AF9653006939C0 /* CustomerMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C942BB9A16AF9653006939C0 /* CustomerMethod.m */; };
+		C9479ACB184492A200AD1304 /* AppUpDateChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = C9479ACA184492A200AD1304 /* AppUpDateChecker.m */; };
 		C94A5709183DD40600CE58E8 /* 中级会员.png in Resources */ = {isa = PBXBuildFile; fileRef = C94A5708183DD40600CE58E8 /* 中级会员.png */; };
 		C94A570C183DD61D00CE58E8 /* 高级会员.png in Resources */ = {isa = PBXBuildFile; fileRef = C94A570A183DD61D00CE58E8 /* 高级会员.png */; };
 		C94A570D183DD61D00CE58E8 /* vip会员.png in Resources */ = {isa = PBXBuildFile; fileRef = C94A570B183DD61D00CE58E8 /* vip会员.png */; };
@@ -285,7 +286,6 @@
 		C99D72B1179F817100492A3B /* ArrayDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D72B0179F817100492A3B /* ArrayDelegate.m */; };
 		C99D72B8179FD1A900492A3B /* IngredientView.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D72B7179FD1A900492A3B /* IngredientView.m */; };
 		C9A75F3C174DDCB300C05AD2 /* AppStoreComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A75F3B174DDCB300C05AD2 /* AppStoreComment.m */; };
-		C9A75F3F174DDD0800C05AD2 /* UpDateChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A75F3E174DDD0700C05AD2 /* UpDateChecker.m */; };
 		C9ADCB5D16DB4C5600B41F23 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9ADCB5C16DB4C5600B41F23 /* MessageUI.framework */; };
 		C9ADCB5F16DB4C6F00B41F23 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9ADCB5E16DB4C6F00B41F23 /* libicucore.dylib */; };
 		C9ADCB6F16DC754100B41F23 /* nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9ADCB6E16DC754100B41F23 /* nav@2x.png */; };
@@ -425,6 +425,8 @@
 		C942BB8316AF9625006939C0 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
 		C942BB9916AF9653006939C0 /* CustomerMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerMethod.h; sourceTree = "<group>"; };
 		C942BB9A16AF9653006939C0 /* CustomerMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerMethod.m; sourceTree = "<group>"; };
+		C9479AC9184492A200AD1304 /* AppUpDateChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUpDateChecker.h; sourceTree = "<group>"; };
+		C9479ACA184492A200AD1304 /* AppUpDateChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUpDateChecker.m; sourceTree = "<group>"; };
 		C94A5708183DD40600CE58E8 /* 中级会员.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中级会员.png"; sourceTree = "<group>"; };
 		C94A570A183DD61D00CE58E8 /* 高级会员.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "高级会员.png"; sourceTree = "<group>"; };
 		C94A570B183DD61D00CE58E8 /* vip会员.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip会员.png"; sourceTree = "<group>"; };
@@ -837,8 +839,6 @@
 		C99D72B7179FD1A900492A3B /* IngredientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientView.m; sourceTree = "<group>"; };
 		C9A75F3A174DDCB300C05AD2 /* AppStoreComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStoreComment.h; sourceTree = "<group>"; };
 		C9A75F3B174DDCB300C05AD2 /* AppStoreComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStoreComment.m; sourceTree = "<group>"; };
-		C9A75F3D174DDD0700C05AD2 /* UpDateChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpDateChecker.h; sourceTree = "<group>"; };
-		C9A75F3E174DDD0700C05AD2 /* UpDateChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpDateChecker.m; sourceTree = "<group>"; };
 		C9ADCB5C16DB4C5600B41F23 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C9ADCB5E16DB4C6F00B41F23 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		C9ADCB6E16DC754100B41F23 /* nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav@2x.png"; sourceTree = "<group>"; };
@@ -1140,12 +1140,12 @@
 				C9F8498F173CC3CD00DA2CDC /* TextLabelView.m */,
 				C96BDAE617429D0E00676B2B /* StateLabel.h */,
 				C96BDAE717429D0E00676B2B /* StateLabel.m */,
-				C9A75F3A174DDCB300C05AD2 /* AppStoreComment.h */,
-				C9A75F3B174DDCB300C05AD2 /* AppStoreComment.m */,
-				C9A75F3D174DDD0700C05AD2 /* UpDateChecker.h */,
-				C9A75F3E174DDD0700C05AD2 /* UpDateChecker.m */,
 				C991A6A5181F645800EBA1D5 /* ZKIButton.h */,
 				C991A6A6181F645800EBA1D5 /* ZKIButton.m */,
+				C9A75F3A174DDCB300C05AD2 /* AppStoreComment.h */,
+				C9A75F3B174DDCB300C05AD2 /* AppStoreComment.m */,
+				C9479AC9184492A200AD1304 /* AppUpDateChecker.h */,
+				C9479ACA184492A200AD1304 /* AppUpDateChecker.m */,
 			);
 			path = ShareView;
 			sourceTree = "<group>";
@@ -2712,7 +2712,6 @@
 				C96B67321828FF55007D73DB /* XMPPRosterMemoryStorage.m in Sources */,
 				C96B67561828FF55007D73DB /* XMPPvCardTempTel.m in Sources */,
 				C96B67491828FF55007D73DB /* XMPPRoom.m in Sources */,
-				C9A75F3F174DDD0800C05AD2 /* UpDateChecker.m in Sources */,
 				C9B248D617812FBB00E7CEDF /* MainViewController.m in Sources */,
 				C9F5E898183C8CF90058B6FF /* AddressViewController.m in Sources */,
 				C96B678A1828FF55007D73DB /* ContextFilterLogFormatter.m in Sources */,
@@ -2775,6 +2774,7 @@
 				C9664D7617C49D40008188AB /* UIImageView+AFNetworking.m in Sources */,
 				C96B67291828FF55007D73DB /* XMPPGoogleSharedStatus.m in Sources */,
 				C96B678F1828FF55007D73DB /* DDXMLElement.m in Sources */,
+				C9479ACB184492A200AD1304 /* AppUpDateChecker.m in Sources */,
 				C937E5AA17D82A9800466633 /* bitstream.c in Sources */,
 				C96B678B1828FF55007D73DB /* DispatchQueueLogFormatter.m in Sources */,
 				C96B67601828FF55007D73DB /* XMPPMessage+XEP_0085.m in Sources */,

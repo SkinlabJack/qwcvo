@@ -14,10 +14,10 @@
     self = [super init];
     if (self) {
         
-        _appCenter       = [[AppCenter alloc] init];
-        _userCenter      = [[UserCenter alloc] init];
-//        _upDateChecker   = [[UpDateChecker alloc] init];
-        _appStoreComment = [[AppStoreComment alloc] init];
+        _appCenter        = [[AppCenter alloc] init];
+        _userCenter       = [[UserCenter alloc] init];
+        _appUpDateChecker = [[AppUpDateChecker alloc] init];
+        _appStoreComment  = [[AppStoreComment alloc] init];
         
     }
     return  self;

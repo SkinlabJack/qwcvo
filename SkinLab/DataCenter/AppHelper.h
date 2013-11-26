@@ -10,14 +10,15 @@
 #import "AppCenter.h"
 #import "UserCenter.h"
 #import "AppStoreComment.h"
-//#import "UpDateChecker.h"
+#import "AppUpDateChecker.h"
+
 
 @interface AppHelper : NSObject
 
-@property (strong, nonatomic) AppCenter       *appCenter;
-@property (strong, nonatomic) UserCenter      *userCenter;
-@property (strong, nonatomic) AppStoreComment *appStoreComment;
-//@property (strong, nonatomic) UpDateChecker   *upDateChecker;
+@property (strong, nonatomic) AppCenter        *appCenter;
+@property (strong, nonatomic) UserCenter       *userCenter;
+@property (strong, nonatomic) AppStoreComment  *appStoreComment;
+@property (strong, nonatomic) AppUpDateChecker *appUpDateChecker;
 
 + (AppHelper *)shareHelper;
 

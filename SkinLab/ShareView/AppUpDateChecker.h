@@ -1,15 +1,15 @@
 //
-//  UpDateChecker.h
+//  AppUpDateChecker.h
 //  SkinLab
 //
-//  Created by Dai Qinfu on 13-5-23.
+//  Created by Dai Qinfu on 13-11-26.
 //  Copyright (c) 2013年 北京思然加互联网科技有限公司. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "SkinLab.h"
+#import "SkinLabHttpClient.h"
 
-@interface UpDateChecker : NSObject <UIAlertViewDelegate>{
+@interface AppUpDateChecker : NSObject <UIAlertViewDelegate> {
     NSString *_newVersion;
     NSString *_appID;
 }

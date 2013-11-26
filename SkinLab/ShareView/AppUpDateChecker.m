@@ -1,14 +1,14 @@
 //
-//  UpDateChecker.m
+//  AppUpDateChecker.m
 //  SkinLab
 //
-//  Created by Dai Qinfu on 13-5-23.
+//  Created by Dai Qinfu on 13-11-26.
 //  Copyright (c) 2013年 北京思然加互联网科技有限公司. All rights reserved.
 //
 
-#import "UpDateChecker.h"
+#import "AppUpDateChecker.h"
 
-@implementation UpDateChecker
+@implementation AppUpDateChecker
 
 - (id)init
 {
@@ -22,6 +22,8 @@
 - (void)startChecker:(NSString *)appID{
     _appID = appID;
     [self httpRequestCheckUpData];
+    
+    DLog(@"版本检测启动")
 }
 
 - (void)upDateWhenQuite {

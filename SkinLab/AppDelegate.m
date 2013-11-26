@@ -36,7 +36,7 @@
     }
 
 //    版本检测
-//    [[AppHelper shareHelper].upDateChecker startChecker:@"663805293"];
+    [[AppHelper shareHelper].appUpDateChecker startChecker:@"663805293"];
     
 //    评价应用
     [[AppHelper shareHelper].appStoreComment startAppStoreComment:@"663805293" withDelay:1];
@@ -123,7 +123,7 @@
 {
     [ZKIAnalytics addNewAction:ZKIAnalyticsTypeClose withSubType:nil withKey:nil];
     
-//    [[AppHelper shareHelper].upDateChecker upDateWhenQuite];
+    [[AppHelper shareHelper].appUpDateChecker upDateWhenQuite];
     
     [ZKIAnalytics beginUploadData];
 }
