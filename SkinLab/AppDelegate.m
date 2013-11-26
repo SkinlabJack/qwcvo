@@ -38,12 +38,10 @@
     }
 
 //    版本检测
-    self.upDateChecker = [[UpDateChecker alloc] init];
-    [self.upDateChecker startChecker:@"663805293"];
+    [[AppHelper shareHelper].upDateChecker startChecker:@"663805293"];
     
 //    评价应用
-    self.appStoreComment = [[AppStoreComment alloc] init];
-    [self.appStoreComment startAppStoreComment:@"663805293" withDelay:1];
+    [[AppHelper shareHelper].appStoreComment startAppStoreComment:@"663805293" withDelay:1];
 
 //    启动友盟Appe分析工具
     MobStart
@@ -127,20 +125,7 @@
 {
     [ZKIAnalytics addNewAction:ZKIAnalyticsTypeClose withSubType:nil withKey:nil];
     
-    if ([DataCenter shareData].upDataWhenQuite) {
-        
-        UILocalNotification * localNotification = [[UILocalNotification alloc] init];
-        if (localNotification) {
-            localNotification.fireDate    = [NSDate dateWithTimeIntervalSinceNow:1];
-            localNotification.timeZone    = [NSTimeZone defaultTimeZone];
-            localNotification.alertBody   = @"升级SkinLab到最新版本。";
-            localNotification.alertAction = @"升级";
-            localNotification.soundName   = @"";
-            [application scheduleLocalNotification:localNotification];
-        }
-        
-        [DataCenter shareData].upDataWhenQuite = NO;
-    }
+    [[AppHelper shareHelper].upDateChecker upDateWhenQuite];
     
     [ZKIAnalytics beginUploadData];
 }

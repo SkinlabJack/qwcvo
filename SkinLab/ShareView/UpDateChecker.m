@@ -80,24 +80,47 @@
                                       }];
 }
 
+- (void)upDateWhenQuite {
+    if (self.isNeedUpDateWhenQuite) {
+        
+        UILocalNotification * localNotification = [[UILocalNotification alloc] init];
+        if (localNotification) {
+            localNotification.fireDate    = [NSDate dateWithTimeIntervalSinceNow:1];
+            localNotification.timeZone    = [NSTimeZone defaultTimeZone];
+            localNotification.alertBody   = @"升级SkinLab到最新版本。";
+            localNotification.alertAction = @"升级";
+            localNotification.soundName   = @"";
+            
+            UIApplication *application = [UIApplication sharedApplication];
+            [application scheduleLocalNotification:localNotification];
+        }
+        
+        self.isNeedUpDateWhenQuite = NO;
+    }
+
+}
+
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     NSString *iTunesLink = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", _appID];
     
     if (alertView.tag == 2) {
+        
         if (buttonIndex == 1) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
         }else if (buttonIndex == 2) {
             [[NSUserDefaults standardUserDefaults] setValue:_newVersion forKey:@"SkipVersion"];
         }else if (buttonIndex == 0) {
-            [DataCenter shareData].upDataWhenQuite = YES;
+            self.isNeedUpDateWhenQuite = YES;
         }
         
     }else if (alertView.tag == 1){
+        
         if (buttonIndex == 0) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
         }
+        
     }
 }
 

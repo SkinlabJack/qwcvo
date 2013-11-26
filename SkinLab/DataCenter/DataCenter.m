@@ -19,10 +19,10 @@
         NSDictionary *infoDict =[[NSBundle mainBundle] infoDictionary];
         NSString *version = infoDict[@"CFBundleVersion"];
         
-        _upDataWhenQuite = NO;
-        _appVersion = version;
-        _appMarket  = @"AppStore";
-        _deviceID   = [OpenUDID value];
+        _upDataWhenQuite     = NO;
+        _appVersion          = version;
+        _appMarket           = @"AppStore";
+        _deviceID            = [OpenUDID value];
         _deviceSystemVersion = [[[UIDevice currentDevice] systemVersion] intValue];
         
         DLog(@"用户识别码 = %@", _deviceID)

@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SkinLabHttpClient.h"
 #import "OpenUDID.h"
+#import "AppCenter.h"
 
 typedef enum{
     DeviceTypeiPhone5,

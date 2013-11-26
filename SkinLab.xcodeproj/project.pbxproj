@@ -343,6 +343,10 @@
 		C9FAED841843424E0082AAAA /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = C9FAED7F1843424E0082AAAA /* zbar-help.html */; };
 		C9FAED851843424E0082AAAA /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FAED801843424E0082AAAA /* zbar-helpicons.png */; };
 		C9FAED861843424E0082AAAA /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FAED811843424E0082AAAA /* zbar-samples.png */; };
+		C9FAED8C184480B30082AAAA /* AppCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FAED8B184480B30082AAAA /* AppCenter.m */; };
+		C9FAED8F184485340082AAAA /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FAED8E184485340082AAAA /* AppHelper.m */; };
+		C9FAED92184486990082AAAA /* IOHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FAED91184486990082AAAA /* IOHelper.m */; };
+		C9FAED95184487F70082AAAA /* UserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FAED94184487F70082AAAA /* UserCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -930,6 +934,14 @@
 		C9FAED7F1843424E0082AAAA /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		C9FAED801843424E0082AAAA /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		C9FAED811843424E0082AAAA /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		C9FAED8A184480B30082AAAA /* AppCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCenter.h; sourceTree = "<group>"; };
+		C9FAED8B184480B30082AAAA /* AppCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCenter.m; sourceTree = "<group>"; };
+		C9FAED8D184485340082AAAA /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		C9FAED8E184485340082AAAA /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		C9FAED90184486990082AAAA /* IOHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHelper.h; sourceTree = "<group>"; };
+		C9FAED91184486990082AAAA /* IOHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOHelper.m; sourceTree = "<group>"; };
+		C9FAED93184487F70082AAAA /* UserCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenter.h; sourceTree = "<group>"; };
+		C9FAED94184487F70082AAAA /* UserCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1046,10 +1058,18 @@
 			isa = PBXGroup;
 			children = (
 				C929DDFA16A8034F0053D1E4 /* SkinLab.h */,
-				C929DDF616A8034F0053D1E4 /* DataCenter.h */,
-				C929DDF716A8034F0053D1E4 /* DataCenter.m */,
 				C910B57C16E9D8A5000D5566 /* SkinLabHttpClient.h */,
 				C910B57D16E9D8A5000D5566 /* SkinLabHttpClient.m */,
+				C9FAED8D184485340082AAAA /* AppHelper.h */,
+				C9FAED8E184485340082AAAA /* AppHelper.m */,
+				C9FAED90184486990082AAAA /* IOHelper.h */,
+				C9FAED91184486990082AAAA /* IOHelper.m */,
+				C929DDF616A8034F0053D1E4 /* DataCenter.h */,
+				C929DDF716A8034F0053D1E4 /* DataCenter.m */,
+				C9FAED8A184480B30082AAAA /* AppCenter.h */,
+				C9FAED8B184480B30082AAAA /* AppCenter.m */,
+				C9FAED93184487F70082AAAA /* UserCenter.h */,
+				C9FAED94184487F70082AAAA /* UserCenter.m */,
 			);
 			path = DataCenter;
 			sourceTree = "<group>";
@@ -2656,6 +2676,7 @@
 				C96B67361828FF55007D73DB /* XMPPIQ+JabberRPC.m in Sources */,
 				C9D598D9171563B200DAD678 /* WeeklyImageView.m in Sources */,
 				C98E82A9182352F0008954A7 /* MMDrawerController.m in Sources */,
+				C9FAED8F184485340082AAAA /* AppHelper.m in Sources */,
 				C91B5E49171669AB008A7541 /* AboutViewController.m in Sources */,
 				C96B67571828FF55007D73DB /* NSXMLElement+XEP_0059.m in Sources */,
 				C92BA6E5180D1A0100E0997B /* BCLSegmentControl.m in Sources */,
@@ -2714,6 +2735,7 @@
 				C9C1461E1798EDDE0008B1A1 /* SimilarProductView.m in Sources */,
 				C970DEB4179D1993000F6271 /* ArrayDataSource.m in Sources */,
 				C96B677C1828FF55007D73DB /* XMPPMessage+XEP_0308.m in Sources */,
+				C9FAED95184487F70082AAAA /* UserCenter.m in Sources */,
 				C96B673E1828FF55007D73DB /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				C99D72B1179F817100492A3B /* ArrayDelegate.m in Sources */,
 				C96B67191828FF55007D73DB /* XMPPDigestMD5Authentication.m in Sources */,
@@ -2758,11 +2780,13 @@
 				C96B676F1828FF55007D73DB /* XMPPMessage+XEP_0172.m in Sources */,
 				C96B67631828FF55007D73DB /* NSString+XEP_0106.m in Sources */,
 				C9C338F1181E444600DAFC99 /* VIPMainViewController.m in Sources */,
+				C9FAED92184486990082AAAA /* IOHelper.m in Sources */,
 				C96B67181828FF55007D73DB /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				C937E5AB17D82A9800466633 /* mask.c in Sources */,
 				C937E5AC17D82A9800466633 /* QRCodeGenerator.m in Sources */,
 				C96B63FD182796E0007D73DB /* ResultViewController.m in Sources */,
 				C96B64001827989D007D73DB /* UserCenterViewController.m in Sources */,
+				C9FAED8C184480B30082AAAA /* AppCenter.m in Sources */,
 				C96B67721828FF55007D73DB /* XMPPMessageDeliveryReceipts.m in Sources */,
 				C96B67661828FF55007D73DB /* XMPPCapsCoreDataStorageObject.m in Sources */,
 				C937E5AD17D82A9800466633 /* qrencode.c in Sources */,

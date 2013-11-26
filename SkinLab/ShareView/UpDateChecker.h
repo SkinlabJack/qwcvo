@@ -15,6 +15,9 @@
     
 }
 
+@property BOOL isNeedUpDateWhenQuite;
+
 - (void)startChecker:(NSString *)appID;
+- (void)upDateWhenQuite;
 
 @end

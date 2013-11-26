@@ -20,8 +20,6 @@
 #import "InviteViewController.h"
 
 #import "ZKIXmppServer.h"
-#import "UpDateChecker.h"
-#import "AppStoreComment.h"
 
 #ifdef DEBUG
     #define MobStart NSLog(@"关闭友盟");
@@ -35,8 +33,6 @@
 
 @property (strong,    retain) NSString *wbtoken;
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UpDateChecker     *upDateChecker;
-@property (strong, nonatomic) AppStoreComment    *appStoreComment;
 @property (strong, nonatomic) ZKIXmppServer      *xmppServer;
 @property (strong, nonatomic) MMDrawerController *drawerController;
 
