@@ -17,6 +17,7 @@
 @property BOOL isNeedUpDateWhenQuite;
 
 - (void)upDateWhenQuite;
+- (void)openUpdateURL;
 - (void)startChecker:(NSString *)appID;
 
 @end

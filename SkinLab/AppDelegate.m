@@ -166,17 +166,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    DLog(@"退出时更新")
-    UIApplicationState state = [application applicationState];
-    
-    if (state == UIApplicationStateInactive) {
-        DLog(@"看过")
-        NSString * url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", @"663805293"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-    }else{
-        DLog(@"没看过")
-    }
-   
+    [[AppHelper shareHelper].appUpDateChecker openUpdateURL];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

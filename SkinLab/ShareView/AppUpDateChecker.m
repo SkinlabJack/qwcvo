@@ -31,7 +31,7 @@
         
         UILocalNotification * localNotification = [[UILocalNotification alloc] init];
         if (localNotification) {
-            localNotification.fireDate    = [NSDate dateWithTimeIntervalSinceNow:1];
+            localNotification.fireDate    = [NSDate dateWithTimeIntervalSinceNow:0.1];
             localNotification.timeZone    = [NSTimeZone defaultTimeZone];
             localNotification.alertBody   = @"升级SkinLab到最新版本。";
             localNotification.alertAction = @"升级";
@@ -40,10 +40,21 @@
             UIApplication *application = [UIApplication sharedApplication];
             [application scheduleLocalNotification:localNotification];
         }
-        
-        self.isNeedUpDateWhenQuite = NO;
     }
     
+}
+
+- (void)openUpdateURL{
+    if (self.isNeedUpDateWhenQuite) {
+        DLog(@"退出时更新")
+        [self performSelector:@selector(methodToRedirectToURL) withObject:nil afterDelay:0.1];
+        self.isNeedUpDateWhenQuite = NO;
+    }
+}
+
+- (void)methodToRedirectToURL {
+    NSString * url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", _appID];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 - (void)httpRequestCheckUpData{

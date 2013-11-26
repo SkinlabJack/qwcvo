@@ -33,7 +33,12 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:self.firstLaunchDateWithVersion]) {
         
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"Commented"]){
-            [self performSelector:@selector(appStoreHandle) withObject:nil afterDelay:30];
+            
+            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:30
+                                                              target:self
+                                                            selector:@selector(appStoreHandle)
+                                                            userInfo:Nil
+                                                             repeats:NO];
         }
         
     }else{
