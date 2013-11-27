@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A7610498-F05C-4CA1-96B1-1563092B6B13</string>
+	<string>D9612555-951F-49FB-A1DF-1DD205FE5B90</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SkinLab</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>815833CF-B318-42CC-975F-8C3341D2258E</key>
-		<string>ssh://github.com/thewingofthesky/qwcvo.git</string>
+		<key>04B88F1F-F52A-482B-AAFD-D61585B1FF00</key>
+		<string>https://github.com/thewingofthesky/qwcvo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SkinLab.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>815833CF-B318-42CC-975F-8C3341D2258E</key>
+		<key>04B88F1F-F52A-482B-AAFD-D61585B1FF00</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/thewingofthesky/qwcvo.git</string>
+	<string>https://github.com/thewingofthesky/qwcvo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>815833CF-B318-42CC-975F-8C3341D2258E</string>
+	<string>04B88F1F-F52A-482B-AAFD-D61585B1FF00</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>815833CF-B318-42CC-975F-8C3341D2258E</string>
+			<string>04B88F1F-F52A-482B-AAFD-D61585B1FF00</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SkinLab</string>
+			<string>qwcvo</string>
 		</dict>
 	</array>
 </dict>

@@ -22,7 +22,6 @@
 #import "UIImageView+AFNetworking.h"
 
 //自定义
-#import "DataCenter.h"
 #import "CustomerMethod.h"
 #import "ZKIButton.h"
 #import "AppHelper.h"
