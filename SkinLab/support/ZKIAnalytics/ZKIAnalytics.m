@@ -74,9 +74,7 @@
             }
             
         }
-        
         #endif
-        
     }
     return self;
 }

@@ -105,7 +105,6 @@
 }
 
 + (void)writeToFileSync:(id)file withFileName:(NSString *)fileName {
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = paths[0];
     NSString *filepath = [path stringByAppendingPathComponent:fileName];
