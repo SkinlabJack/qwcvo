@@ -17,13 +17,14 @@
 
 }
 
-@property (strong, nonatomic) NSMutableArray *favoriteArray;
 @property (strong, nonatomic) NSMutableArray *wantArray;
 @property (strong, nonatomic) NSMutableArray *usingArray;
 @property (strong, nonatomic) NSMutableArray *weeklyReadArray;
 @property (strong, nonatomic) NSDictionary   *testResultArray;
 @property (strong, nonatomic) NSArray        *classArray;
 @property (strong, nonatomic) NSArray        *weeklyArray;
+
+@property (strong, nonatomic) NSMutableDictionary *notReadNumberDictionary;
 
 - (void)addToMyWant:(NSDictionary *)dic;
 - (void)addToMyUsing:(NSDictionary *)dic;

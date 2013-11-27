@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SkinLabHttpClient.h"
-
 
 @implementation AppDelegate
 
@@ -57,10 +55,22 @@
         [AppHelper shareHelper].dataCenter.usingArray = [[NSMutableArray alloc] init];
     }
     
+    if ([IOHelper isFileExist:@"notReadNumber.plist"]) {
+        [AppHelper shareHelper].dataCenter.notReadNumberDictionary = [IOHelper readDictionaryFromFile:@"notReadNumber.plist"];
+    }else{
+        [AppHelper shareHelper].dataCenter.notReadNumberDictionary = [[NSMutableDictionary alloc] init];
+    }
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:[IOHelper getStringWithVersion:@"test"]]) {
         [AppHelper shareHelper].dataCenter.testResultArray = [IOHelper readDictionaryFromFile:@"testResult.plist"];
     }else{
         
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"WeeklyRead"]) {
+        [AppHelper shareHelper].dataCenter.weeklyReadArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"WeeklyRead"]];
+    }else{
+        [AppHelper shareHelper].dataCenter.weeklyReadArray = [NSMutableArray array];
     }
     
 //    初始化主页面
@@ -83,6 +93,7 @@
         self.drawerController = mmDrawerController;
         [self.drawerController setShowsShadow:YES];
     }
+    
     
 //    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
     [self.drawerController setMaximumLeftDrawerWidth:260];
@@ -174,6 +185,7 @@
     DLog(@"userinfo:%@",userInfo);
     
     for (NSString *key in [[userInfo objectForKey:@"aps"] allKeys]) {
+//        打开周刊列表
         if ([key isEqualToString:@"weekly"]) {
             DLog(@"收到推送消息:宝典")
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowWeeklyView" object:nil];
@@ -181,6 +193,8 @@
     }
 }
 
+
+//新浪微博Delegate
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request {
     
 }
@@ -219,6 +233,8 @@
     
 }
 
+
+//抽屉页面切换
 - (void)changeView:(NSNotification *)notification {
     NSString *viewName = notification.userInfo[@"ViewName"];
     DLog(@"%@", notification.userInfo)
@@ -256,21 +272,6 @@
         }
         
         [self.drawerController setCenterViewController:self.userCenterViewController withFullCloseAnimation:YES completion:nil];
-        
-    }else if ([viewName isEqualToString:@"ConsultView"]) {
-        if (self.consultViewController == nil) {
-            ConsultViewController *tempViewController = [[ConsultViewController alloc] init];
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tempViewController];
-            self.consultViewController = navigationController;
-            
-            if ([AppHelper shareHelper].appCenter.isiOS7) {
-                [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
-            }else{
-                [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
-            }
-        }
-        
-        [self.drawerController setCenterViewController:self.consultViewController withFullCloseAnimation:YES completion:nil];
         
     }else if ([viewName isEqualToString:@"SettingView"]) {
         
@@ -310,6 +311,21 @@
         }
         
         [self.drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:nil];
+        
+    }else if ([viewName isEqualToString:@"ConsultView"]) {
+        if (self.consultViewController == nil) {
+            ConsultViewController *tempViewController = [[ConsultViewController alloc] init];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tempViewController];
+            self.consultViewController = navigationController;
+            
+            if ([AppHelper shareHelper].appCenter.isiOS7) {
+                [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav128"] forBarPosition:UIBarPositionTop barMetrics:UIBarMetricsDefault];
+            }else{
+                [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav"] forBarMetrics:UIBarMetricsDefault];
+            }
+        }
+        
+        [self.drawerController setCenterViewController:self.consultViewController withFullCloseAnimation:YES completion:nil];
         
     }
     

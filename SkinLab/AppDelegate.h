@@ -20,6 +20,7 @@
 #import "InviteViewController.h"
 
 #import "ZKIXmppServer.h"
+#import "SkinLabHttpClient.h"
 
 #ifdef DEBUG
     #define MobStart NSLog(@"关闭友盟");

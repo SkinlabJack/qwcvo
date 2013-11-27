@@ -17,13 +17,6 @@
     self = [super init];
     if (self) {
         
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"WeeklyRead"]) {
-            NSMutableArray *weeklyReadArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"WeeklyRead"]];
-            self.weeklyReadArray = weeklyReadArray;
-        }else{
-            self.weeklyReadArray = [NSMutableArray array];
-        }
-        
     }
     return  self;
 }
