@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DataCenter.h"
 
 @interface AppStoreComment : NSObject <UIAlertViewDelegate>{
     int _delayDays;

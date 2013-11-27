@@ -40,7 +40,7 @@
     float x = 10;
     float y = 10;
     
-    if (![DataCenter isNull:array] && array.count != 0) {
+    if (![IOHelper isNull:array] && array.count != 0) {
         if (productDes != nil) {
             CGSize labelsize = [productDes sizeWithFont:[UIFont systemFontOfSize:13]
                                       constrainedToSize:CGSizeMake(265, 400)

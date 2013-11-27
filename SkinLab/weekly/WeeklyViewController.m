@@ -82,7 +82,7 @@
         self.navigationItem.leftBarButtonItem = leftBarButton;
     }
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         if ([AppHelper shareHelper].appCenter.isiOS7) {
             UIButton *tempTeftButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 20 + 7.5, 50, 30)];
             self.leftButton = tempTeftButton;
@@ -105,7 +105,7 @@
 
 - (IBAction)leftBarButtonClicked:(id)sender{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
@@ -121,7 +121,7 @@
     
     UIScrollView *scrollView = (UIScrollView *)[self.view viewWithTag:101];
     if (scrollView.contentOffset.x == 0) {
-        if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+        if (![AppHelper shareHelper].appCenter.isiPhone5) {
 
             [self.navigationController setNavigationBarHidden:NO animated:YES];
             
@@ -358,7 +358,7 @@
             [imageView setImageWithURL:[SkinLabHttpClient getImageURL:otherDic[@"imageURL"]]];
             imageView.delegate = self;
             
-            if (![DataCenter isNull:otherDic[@"name"]]) {
+            if (![IOHelper isNull:otherDic[@"name"]]) {
                 NSArray *nameArray = [otherDic[@"name"] componentsSeparatedByString:@"$$"];
                 (self.changeableViewDic)[nameArray[1]] = imageView;
             }
@@ -415,7 +415,7 @@
                 //                处理分支页面点击事件
             }else if ([buttonEffectArray[0] isEqualToString:@"Jump"]){
                 
-                if (![DataCenter isNull:buttonEffectArray[1]]) {
+                if (![IOHelper isNull:buttonEffectArray[1]]) {
                     
                     [imageView setTapGestureType:WeeklyImageTypeJump];
                     imageView.viewName = buttonEffectArray[1];
@@ -615,7 +615,7 @@
         }];
     }
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
 }

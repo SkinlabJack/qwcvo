@@ -43,7 +43,7 @@
     [self.topSement setSegmentDefaultIndex:0];
     [self.view addSubview:self.topSement];
     
-    self.productArray = [DataCenter shareData].wantArray;
+    self.productArray = [AppHelper shareHelper].dataCenter.wantArray;
     
     UITableView *tempTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight - KSNHeight - 40)];
     self.tableView = tempTableView;
@@ -142,33 +142,33 @@
     NSString *productInfo;
     NSString *productEffect;
     
-    if (![DataCenter isNull:cellDataDic[@"productImage"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productImage"]]) {
         NSString *imageURLString = [cellDataDic[@"productImage"] stringByReplacingOccurrencesOfString:@".jpg" withString:@"_small.jpg"];
         imageURL = [SkinLabHttpClient getImageURL:imageURLString];
     }else{
         imageURL = nil;
     }
     
-    if (![DataCenter isNull:cellDataDic[@"productName"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productName"]]) {
         productName = cellDataDic[@"productName"];
     }else{
         productName = @"";
     }
     
-    if (![DataCenter isNull:cellDataDic[@"productBrand"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productBrand"]]) {
         productBrand = cellDataDic[@"productBrand"];
     }else{
         productBrand = @"";
     }
     
-    if (![DataCenter isNull:cellDataDic[@"produtEffect"]]) {
+    if (![IOHelper isNull:cellDataDic[@"produtEffect"]]) {
         NSString *produtEffectString = [cellDataDic[@"produtEffect"] stringByReplacingOccurrencesOfString:@"@@" withString:@","];
         productEffect = [NSString stringWithFormat:@"效果：%@", produtEffectString];
     }else{
         productEffect = @"";
     }
     
-    if (![DataCenter isNull:cellDataDic[@"productType"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productType"]]) {
         productInfo = [NSString stringWithFormat:@"产品类型：%@  %@", cellDataDic[@"productType"], productEffect];
     }else{
         productInfo = @"";
@@ -191,7 +191,7 @@
 {
     RecommendDetailViewController *recommendDetailViewController = [[RecommendDetailViewController alloc] initWithNibName:@"RecommendDetailViewController" bundle:nil];
     recommendDetailViewController.recommendDetailViewMode = RecommendDetailViewModeWithNav;
-    [recommendDetailViewController setProductInfoByID:[DataCenter shareData].wantArray[indexPath.row][@"productID"]];
+    [recommendDetailViewController setProductInfoByID:[AppHelper shareHelper].dataCenter.wantArray[indexPath.row][@"productID"]];
     [self.navigationController pushViewController:recommendDetailViewController animated:YES];
 }
 
@@ -213,11 +213,11 @@
     [self.tableView beginUpdates];
     
     if (self.topSement.index == 0) {
-        [[DataCenter shareData] deleteFromMyWantAtIndex:cell.index];
-        self.productArray = [DataCenter shareData].wantArray;
+        [[AppHelper shareHelper].dataCenter deleteFromMyWantAtIndex:cell.index];
+        self.productArray = [AppHelper shareHelper].dataCenter.wantArray;
     }else{
-        [[DataCenter shareData] deleteFromMyUsingAtIndex:cell.index];
-        self.productArray = [DataCenter shareData].usingArray;
+        [[AppHelper shareHelper].dataCenter deleteFromMyUsingAtIndex:cell.index];
+        self.productArray = [AppHelper shareHelper].dataCenter.usingArray;
     }
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:cell.index inSection:0];
@@ -232,9 +232,9 @@
 - (void)segmentValueChanged:(NSInteger)index {
     
     if (index == 0) {
-        self.productArray = [DataCenter shareData].wantArray;
+        self.productArray = [AppHelper shareHelper].dataCenter.wantArray;
     }else{
-        self.productArray = [DataCenter shareData].usingArray;
+        self.productArray = [AppHelper shareHelper].dataCenter.usingArray;
     }
     
     [self reloadTable];

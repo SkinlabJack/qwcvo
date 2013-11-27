@@ -61,7 +61,7 @@
         
         
         NSURL *imageURL = nil;
-        if (![DataCenter isNull:dic[@"productImage"]]) {
+        if (![IOHelper isNull:dic[@"productImage"]]) {
             NSString *imageURLString = [dic[@"productImage"] stringByReplacingOccurrencesOfString:@".jpg" withString:@"_small.jpg"];
             imageURL = [SkinLabHttpClient getImageURL:imageURLString];
         }

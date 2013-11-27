@@ -35,10 +35,10 @@
     [self httpRequestSearchClass];
     [self httpRequestWeeklyData];
     
-    if (![DataCenter isFileExist:@"BreadsList.plist"]) {
+    if (![IOHelper isFileExist:@"BreadsList.plist"]) {
         [self httpRequestBranch];
     }else{
-        self.braedsListArray = [DataCenter readArrayFromFile:@"BreadsList.plist"];
+        self.braedsListArray = [IOHelper readArrayFromFile:@"BreadsList.plist"];
     }
     
     [self setupButtonView];
@@ -179,7 +179,7 @@
     ZKIButton *testButton = [[ZKIButton alloc] initWithFrame:CGRectMake(15, viewHeight + gapHeight * 2 + qrButtonHeight, 290, viewHeight)];
     [self.contentView addSubview:testButton];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:[DataCenter getStringWithVersion:@"test"]]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:[IOHelper getStringWithVersion:@"test"]]) {
         
         UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 290, 20)];
         textLabel.textAlignment   = UITextAlignmentCenter;
@@ -228,7 +228,7 @@
     self.productView.showsHorizontalScrollIndicator = NO;
     self.productView.pagingEnabled = YES;
     
-    NSArray *array = [DataCenter shareData].testResultArray[@"Products"];
+    NSArray *array = [AppHelper shareHelper].dataCenter.testResultArray[@"Products"];
     
     for (int i = 0; i < array.count; i++) {
         
@@ -455,7 +455,7 @@
 
 
 - (IBAction)subTypeButtonClicked:(UIButton *)sender {
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
     
@@ -523,7 +523,7 @@
                                            self.searchClassArray = dataArray;
                                            [self setupQuickSearchLabel];
                                            
-                                           [DataCenter shareData].classArray = [self handleSkinTypeArray:dataArray];
+                                           [AppHelper shareHelper].dataCenter.classArray = [self handleSkinTypeArray:dataArray];
                                            
                                        }
                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -544,7 +544,7 @@
                                            
                                            DLog(@"%@", dataArray)
                                            
-                                           if ([DataCenter isNull:operation.responseString]) {
+                                           if ([IOHelper isNull:operation.responseString]) {
                                                [self.qrSearchViewController showUpdateView:YES];
                                            }else{
                                                RecommendDetailViewController *recommendDetailViewController = [[RecommendDetailViewController alloc] initWithNibName:@"RecommendDetailViewController" bundle:nil];
@@ -570,10 +570,10 @@
                                            NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                                                 options:NSJSONReadingMutableLeaves
                                                                                                   error:nil];
-                                           if (![DataCenter isNull:dataArray]) {
+                                           if (![IOHelper isNull:dataArray]) {
                                                
                                                self.braedsListArray = [dataArray sortedArrayUsingFunction:brandsSort context:NULL];
-                                               [[DataCenter shareData] writeToFile:self.braedsListArray withFileName:@"BreadsList.plist"];
+                                               [IOHelper writeToFileAsyn:self.braedsListArray withFileName:@"BreadsList.plist"];
                                                
                                            }
                                            DLog(@" %d", dataArray.count)
@@ -593,11 +593,11 @@
                                            NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                                                      options:NSJSONReadingMutableLeaves
                                                                                                        error:nil];
-                                           [DataCenter shareData].weeklyArray = dataArray;
+                                           [AppHelper shareHelper].dataCenter.weeklyArray = dataArray;
                                            
                                            NSDictionary *weeklyDic = dataArray[dataArray.count - 1];
                                            
-                                           if (![[DataCenter shareData] isWeeklyRead:weeklyDic[@"JID"]]) {
+                                           if (![[AppHelper shareHelper].dataCenter isWeeklyRead:weeklyDic[@"JID"]]) {
                                                [UIView animateWithDuration:0.25 animations:^{
                                                    self.weeklyBadge.alpha = 1;
                                                }];
@@ -624,7 +624,7 @@ NSInteger brandsSort(id user1, id user2, void *context)
 #pragma mark - SearchViewDelegate
 
 - (void)searchFieldDidTouched {
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
     
@@ -706,10 +706,10 @@ NSInteger brandsSort(id user1, id user2, void *context)
 - (void)questionnaireDidFinished:(NSDictionary *)dic {
     
     DLog(@"测试完成 %@", dic);
-    [DataCenter shareData].testResultArray = dic;
+    [AppHelper shareHelper].dataCenter.testResultArray = dic;
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[DataCenter getStringWithVersion:@"test"]];
-    [[DataCenter shareData] writeToFile:dic withFileName:@"testResult.plist"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[IOHelper getStringWithVersion:@"test"]];
+    [IOHelper writeToFileAsyn:dic withFileName:@"testResult.plist"];
     
     ResultViewController *userCenterViewController = [[ResultViewController alloc] init];
     userCenterViewController.showDescription = YES;
@@ -772,7 +772,7 @@ NSInteger brandsSort(id user1, id user2, void *context)
         self.contentView.frame = rect;
     }];
     
-    NSArray *array = [DataCenter shareData].classArray;
+    NSArray *array = [AppHelper shareHelper].dataCenter.classArray;
     
     for (NSDictionary *dic in array) {
         if ([dic[@"basicType"] isEqualToString:textLabelView.textLabel.text]) {

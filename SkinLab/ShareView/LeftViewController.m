@@ -70,7 +70,7 @@
 
 - (void)setupNavigationController{
     
-    if ([DataCenter isLogin]) {
+    if ([AppHelper shareHelper].userCenter.isLogin) {
         self.navigationItem.leftBarButtonItem = nil;
     }else{
         UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];

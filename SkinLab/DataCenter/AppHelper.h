@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AppCenter.h"
+#import "DataCenter.h"
 #import "UserCenter.h"
 #import "AppStoreComment.h"
 #import "AppUpDateChecker.h"
@@ -16,6 +17,7 @@
 @interface AppHelper : NSObject
 
 @property (strong, nonatomic) AppCenter        *appCenter;
+@property (strong, nonatomic) DataCenter       *dataCenter;
 @property (strong, nonatomic) UserCenter       *userCenter;
 @property (strong, nonatomic) AppStoreComment  *appStoreComment;
 @property (strong, nonatomic) AppUpDateChecker *appUpDateChecker;

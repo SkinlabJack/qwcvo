@@ -9,7 +9,7 @@
 #import "ZKIAnalytics.h"
 #import "SkinLabHttpClient.h"
 #import "OpenUDID.h"
-#import "DataCenter.h"
+#import "IOHelper.h"
 
 @implementation ZKIAnalytics
 
@@ -36,9 +36,9 @@
         DLog(@"ZKIAnalytics DEBUG")
         #else
         
-        if ([DataCenter isFileExist:@"userActionArray.plist"]) {
+        if ([IOHelper isFileExist:@"userActionArray.plist"]) {
             
-            NSArray *array = [DataCenter readArrayFromFile:@"userActionArray.plist"];
+            NSArray *array = [IOHelper readArrayFromFile:@"userActionArray.plist"];
             NSString *isFirstLaunch;
             
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ZKIAnalyticsLaunch"]) {
@@ -204,7 +204,7 @@
 
 + (void)addNewAction:(ZKIAnalyticsType)type withSubType:(NSString *)subType withKey:(NSString *)key{
     [[ZKIAnalytics shareAnalytics] addNewAction:type withSubType:subType withKey:key];
-    [DataCenter writeToFileSync:[ZKIAnalytics shareAnalytics].userActionArray withFileName:@"userActionArray.plist"];
+    [IOHelper writeToFileSync:[ZKIAnalytics shareAnalytics].userActionArray withFileName:@"userActionArray.plist"];
 }
 
 + (void)beginUploadData {
@@ -233,7 +233,7 @@
                                                        
                                                        DLog(@"%@", operation.responseString)
                                                        [[ZKIAnalytics shareAnalytics].userActionArray removeAllObjects];
-                                                       [DataCenter removeFile:@"userActionArray.plist"];
+                                                       [IOHelper removeFile:@"userActionArray.plist"];
                                                        
                                                        [application endBackgroundTask: background_task];
                                                        background_task = UIBackgroundTaskInvalid;

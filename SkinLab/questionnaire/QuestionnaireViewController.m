@@ -32,8 +32,8 @@
         _userAnswer    = [[NSMutableArray alloc] init];
         _previousArray = [[NSMutableArray alloc] init];
         
-        if ([DataCenter isFileExist:@"answerDic.plist"]) {
-            _answerDic = [[NSMutableDictionary alloc] initWithDictionary:[DataCenter readDictionaryFromFile:@"answerDic.plist"]];
+        if ([IOHelper isFileExist:@"answerDic.plist"]) {
+            _answerDic = [[NSMutableDictionary alloc] initWithDictionary:[IOHelper readDictionaryFromFile:@"answerDic.plist"]];
         }else{
             _answerDic = [[NSMutableDictionary alloc] init];
         }
@@ -215,7 +215,7 @@
                                                                                                  error:nil];
                                           self.questionArray = dataArray;
                                           
-//                                          if (![DataCenter isNull:self.questionArray[0][@"QDes"]]) {
+//                                          if (![IOHelper isNull:self.questionArray[0][@"QDes"]]) {
 //                                              [self showNoteVie:self.questionArray[0][@"QDes"] show:YES];
 //                                          }
 //                                          DLog(@"%@", dataArray)
@@ -251,7 +251,7 @@
                                                                                                    options:NSJSONReadingMutableLeaves
                                                                                                      error:nil];
                                         
-                                           if ([DataCenter isNull:dataDic]) {
+                                           if ([IOHelper isNull:dataDic]) {
                                                [self questionnaireDidEnded];
                                            }else{
                                                [self.delegate questionnaireDidFinished:dataDic];
@@ -318,9 +318,9 @@
     NSString *questionID = self.questionArray[nextTag - 1][@"QID"];
     NSString *answerID   = self.answerDic[questionID];
     [self.questionView setAnswerViewSelected:answerID];
-    [[DataCenter shareData] writeToFile:self.answerDic withFileName:@"answerDic.plist"];
+    [IOHelper writeToFileAsyn:self.answerDic withFileName:@"answerDic.plist"];
     
-//    if (![DataCenter isNull:self.questionArray[nextTag - 1][@"QDes"]]) {
+//    if (![IOHelper isNull:self.questionArray[nextTag - 1][@"QDes"]]) {
 //        [self showNoteVie:self.questionArray[nextTag - 1][@"QDes"] show:YES];
 //    }
 }
@@ -336,7 +336,7 @@
     [self.questionnaireProgressView setProgressData:100];
     NSString *answerString = [self.userAnswer componentsJoinedByString:@"@@"];
     
-    [self httpRequestUpLoadAnswer:[DataCenter shareData].deviceID
+    [self httpRequestUpLoadAnswer:[AppHelper shareHelper].appCenter.deviceID
                            answer:answerString
                          skinType:self.skinType];
         

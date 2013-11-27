@@ -24,7 +24,7 @@
 #ifdef DEBUG
     #define MobStart NSLog(@"关闭友盟");
 #else
-    #define MobStart [MobClick startWithAppkey:@"513e9ed15270152000000043" reportPolicy:REALTIME channelId:[DataCenter shareData].appMarket];
+    #define MobStart [MobClick startWithAppkey:@"513e9ed15270152000000043" reportPolicy:REALTIME channelId:[AppHelper shareHelper].appCenter.appMarket];
 #endif
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, WeiboSDKDelegate>{

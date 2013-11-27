@@ -45,20 +45,20 @@
     MobStart
     
 //    初始化数据中心
-    if ([DataCenter isFileExist:@"want.plist"]) {
-        [DataCenter shareData].wantArray = [[NSMutableArray alloc] initWithArray:[DataCenter readArrayFromFile:@"want.plist"]];
+    if ([IOHelper isFileExist:@"want.plist"]) {
+        [AppHelper shareHelper].dataCenter.wantArray = [[NSMutableArray alloc] initWithArray:[IOHelper readArrayFromFile:@"want.plist"]];
     }else{
-        [DataCenter shareData].wantArray = [[NSMutableArray alloc] init];
+        [AppHelper shareHelper].dataCenter.wantArray = [[NSMutableArray alloc] init];
     }
     
-    if ([DataCenter isFileExist:@"using.plist"]) {
-        [DataCenter shareData].usingArray = [[NSMutableArray alloc] initWithArray:[DataCenter readArrayFromFile:@"using.plist"]];
+    if ([IOHelper isFileExist:@"using.plist"]) {
+        [AppHelper shareHelper].dataCenter.usingArray = [[NSMutableArray alloc] initWithArray:[IOHelper readArrayFromFile:@"using.plist"]];
     }else{
-        [DataCenter shareData].usingArray = [[NSMutableArray alloc] init];
+        [AppHelper shareHelper].dataCenter.usingArray = [[NSMutableArray alloc] init];
     }
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:[DataCenter getStringWithVersion:@"test"]]) {
-        [DataCenter shareData].testResultArray = [DataCenter readDictionaryFromFile:@"testResult.plist"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:[IOHelper getStringWithVersion:@"test"]]) {
+        [AppHelper shareHelper].dataCenter.testResultArray = [IOHelper readDictionaryFromFile:@"testResult.plist"];
     }else{
         
     }
@@ -147,12 +147,12 @@
 {
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [DataCenter shareData].deviceToken = token;
+    [AppHelper shareHelper].appCenter.deviceToken = token;
     
 //    如果Push功能为开启状态则上传deviceToken
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PushOn"]) {
         [[SkinLabHttpClient sharedClient] postPath:[SkinLabHttpClient getSubPath:SkinLabRequertTypeSystemUploadToken]
-                                        parameters:@{@"UserID": [DataCenter shareData].deviceID, @"DeviceToken": token}
+                                        parameters:@{@"UserID": [AppHelper shareHelper].appCenter.deviceID, @"DeviceToken": token}
                                            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                DLog(@"%@", [NSJSONSerialization JSONObjectWithData:responseObject
                                                                                            options:NSJSONReadingMutableLeaves

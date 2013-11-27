@@ -108,7 +108,7 @@
     [view addSubview:button];
     
     [button addTapBlock:^(NSString *keyID) {
-        if (![DataCenter isLogin]) {
+        if (![AppHelper shareHelper].userCenter.isLogin) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您还没有登录"
                                                             message:@"成为SkinLab会员，尽享专属服务"
                                                            delegate:self

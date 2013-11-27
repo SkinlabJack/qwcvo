@@ -11,29 +11,11 @@
 #import "SkinLabHttpClient.h"
 #import "OpenUDID.h"
 
-typedef enum{
-    DeviceTypeiPhone5,
-    DeviceTypeiPhone4
-}DeviceType;
-
 @class AppDelegate;
 
 @interface DataCenter : NSObject{
 
 }
-
-
-@property BOOL pushOn;
-@property BOOL isLogin;
-@property BOOL hasAddress;
-
-@property (copy, nonatomic) NSString *appVersion;
-@property (copy, nonatomic) NSString *appMarket;
-@property (copy, nonatomic) NSString *deviceToken;
-@property (copy, nonatomic) NSString *deviceID;
-
-@property (assign, nonatomic) float deviceSystemVersion;
-@property (assign, nonatomic) DeviceType deviceType;
 
 @property (strong, nonatomic) NSMutableArray *favoriteArray;
 @property (strong, nonatomic) NSMutableArray *wantArray;
@@ -42,23 +24,6 @@ typedef enum{
 @property (strong, nonatomic) NSDictionary   *testResultArray;
 @property (strong, nonatomic) NSArray        *classArray;
 @property (strong, nonatomic) NSArray        *weeklyArray;
-
-+ (DataCenter *)shareData;
-
-+ (BOOL)isLogin;
-
-+ (NSData *)cleanNullOfString:(NSString *)string;
-+ (NSString *)getStringWithVersion:(NSString *)string;
-+ (NSString *)getCurrentTime;
-+ (NSString *)getDocumentFilePath:(NSString*)fileName;
-+ (BOOL)isFileExist:(NSString *)filePath;
-+ (NSMutableDictionary *)readDictionaryFromFile:(NSString *)fileName;
-+ (NSMutableArray *)readArrayFromFile:(NSString *)fileName;
-
-+ (BOOL)removeFile:(NSString *)fileName;
-+ (BOOL)isNull:(id)file;
-+ (void)writeToFile:(id)file withFileName:(NSString *)fileName;
-+ (void)writeToFileSync:(id)file withFileName:(NSString *)fileName;
 
 - (void)addToMyWant:(NSDictionary *)dic;
 - (void)addToMyUsing:(NSDictionary *)dic;
@@ -74,7 +39,5 @@ typedef enum{
 
 - (void)markWeeklyRead:(NSString *)JID;
 - (BOOL)isWeeklyRead:(NSString *)JID;
-
-- (void)writeToFile:(id)file withFileName:(NSString *)fileName;
 
 @end

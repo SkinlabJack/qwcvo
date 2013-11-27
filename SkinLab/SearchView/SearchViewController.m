@@ -60,7 +60,7 @@
     [self setupMainView];
     [self setupSearchView];
     [self setupSearchTableView];
-    [self setupSkinTypeView:[DataCenter shareData].classArray];
+    [self setupSkinTypeView:[AppHelper shareHelper].dataCenter.classArray];
     [self setupStateLabel];
     
     [self.stateLabel setupStateLabel:StateLabelModeLoading];
@@ -114,7 +114,7 @@
 
 - (void)setupSearchView {
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         SearchView *tempView = [[SearchView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SearchViewHeight) withMode:SearchViewModeSearchView];
         self.searchView = tempView;
     }else{
@@ -140,7 +140,7 @@
     
     float buttonHeight;
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone5) {
+    if ([AppHelper shareHelper].appCenter.isiPhone5) {
         buttonHeight = (kScreenHeight - KSNHeight - SearchViewHeight)/6;
     }else{
         buttonHeight = (kScreenHeight - KSHeight - SearchViewHeight)/6;
@@ -150,7 +150,7 @@
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonHeight * i, SkinTypeViewWidth, buttonHeight)];
         button.backgroundColor = [UIColor whiteColor];
         button.titleLabel.font = [UIFont systemFontOfSize:16];
-        [button setTitle:[DataCenter shareData].classArray[i][@"basicType"] forState:UIControlStateNormal];
+        [button setTitle:[AppHelper shareHelper].dataCenter.classArray[i][@"basicType"] forState:UIControlStateNormal];
         [button setTitleColor:GreenColor forState:UIControlStateNormal];
         [button addTarget:self action:@selector(skinTypeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.skinTypeView insertSubview:button belowSubview:line];
@@ -159,7 +159,7 @@
 
 - (void)setupSearchTableView{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         UITableView *tempTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SearchViewHeight, kScreenWidth, kScreenHeight)];
         self.searchTableView = tempTableView;
         
@@ -324,7 +324,7 @@
         self.skintypeTableView.delegate = self.skintypeTableDelegate;
     }
     
-    for (NSDictionary *dic in [DataCenter shareData].classArray) {
+    for (NSDictionary *dic in [AppHelper shareHelper].dataCenter.classArray) {
         if ([dic[@"basicType"] isEqualToString:skinType]) {
             self.skintypeTableDataSource = [[ArrayDataSource alloc] initWithItems:dic[@"subType"]
                                                             cellIdentifier:@"TyleCell"
@@ -380,7 +380,7 @@
                        type:self.type
                    priceLow:self.priceLow
                   priceHigh:self.priceHigh
-                     userID:[DataCenter shareData].deviceID
+                     userID:[AppHelper shareHelper].appCenter.deviceID
                        page:pageString];
 }
 
@@ -478,7 +478,7 @@
                                            NSArray *productArray = dataDic[@"Products"];
 //                                           DLog(@"%@", dataDic);
                                            
-                                           if (![DataCenter isNull:productArray]) {
+                                           if (![IOHelper isNull:productArray]) {
                                                
                                                if (_page == 1) {
                                                    self.productListArray = [NSMutableArray arrayWithArray:productArray];
@@ -508,7 +508,7 @@
                                                    _loadingMore = NO;
                                                }else{
                                                    
-                                                   if (![DataCenter isNull:dataDic[@"Type"]]) {
+                                                   if (![IOHelper isNull:dataDic[@"Type"]]) {
                                                        NSMutableArray *tempArray = [NSMutableArray arrayWithObject:@{@"productType": @"所有类型"}];
                                                        [tempArray addObjectsFromArray:dataDic[@"Type"]];
                                                        self.productTypesArray = tempArray;
@@ -560,7 +560,7 @@
                                            NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                                                 options:NSJSONReadingMutableLeaves
                                                                                                   error:nil];
-                                           if (![DataCenter isNull:dataArray]) {
+                                           if (![IOHelper isNull:dataArray]) {
                                                NSMutableArray *tempAttay = [NSMutableArray arrayWithObject:@{@"productBrand": @"所有品牌"}];
                                                [tempAttay addObjectsFromArray:[dataArray sortedArrayUsingFunction:searchBrandsSort context:NULL]];
                                                self.productBrandsArray = tempAttay;
@@ -577,7 +577,7 @@
 - (void)httpRequestProductClicked:(NSString *)productID {
     
     [[SkinLabHttpClient sharedClient] postPath:[SkinLabHttpClient getSubPath:SkinLabRequertTypeProductClicked]
-                                    parameters:@{@"UserID": [DataCenter shareData].deviceID, @"ProductID": productID}
+                                    parameters:@{@"UserID": [AppHelper shareHelper].appCenter.deviceID, @"ProductID": productID}
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            
                                        }
@@ -623,27 +623,27 @@ NSInteger searchBrandsSort(id user1, id user2, void *context)
     NSString *productBrand;
     NSString *productEffect;
     
-    if (![DataCenter isNull:cellDataDic[@"productImage"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productImage"]]) {
         NSString *imageURLString = [cellDataDic[@"productImage"] stringByReplacingOccurrencesOfString:@".jpg" withString:@"_small.jpg"];
         imageURL = [SkinLabHttpClient getImageURL:imageURLString];
     }else{
         imageURL = nil;
     }
     
-    if (![DataCenter isNull:cellDataDic[@"productName"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productName"]]) {
         productName = cellDataDic[@"productName"];
     }else{
         productName = @"";
     }
     
-    if (![DataCenter isNull:cellDataDic[@"productBrand"]]) {
+    if (![IOHelper isNull:cellDataDic[@"productBrand"]]) {
         productBrand = cellDataDic[@"productBrand"];
     }else{
         productBrand = @"";
     }
     
     if (self.effect != nil) {
-        if (![DataCenter isNull:cellDataDic[@"produtEffect"]]) {
+        if (![IOHelper isNull:cellDataDic[@"produtEffect"]]) {
             
             NSString *produtEffectString = [cellDataDic[@"produtEffect"] stringByReplacingOccurrencesOfString:@"@@" withString:@","];
             productEffect = [NSString stringWithFormat:@"效果:%@,%@", self.effect, produtEffectString];
@@ -652,7 +652,7 @@ NSInteger searchBrandsSort(id user1, id user2, void *context)
             productEffect = [NSString stringWithFormat:@"效果:%@", self.effect];;
         }
     }else{
-        if (![DataCenter isNull:cellDataDic[@"produtEffect"]]) {
+        if (![IOHelper isNull:cellDataDic[@"produtEffect"]]) {
             
             NSString *produtEffectString = [cellDataDic[@"produtEffect"] stringByReplacingOccurrencesOfString:@"@@" withString:@","];
             productEffect = [NSString stringWithFormat:@"效果:%@", produtEffectString];
@@ -662,7 +662,7 @@ NSInteger searchBrandsSort(id user1, id user2, void *context)
         }
     }
     
-//    if (![DataCenter isNull:cellDataDic[@"productType"]]) {
+//    if (![IOHelper isNull:cellDataDic[@"productType"]]) {
 //        productInfo = [NSString stringWithFormat:@"产品类型:%@  %@", cellDataDic[@"productType"], productEffect];
 //    }else{
 //        productInfo = @"";
@@ -711,7 +711,7 @@ NSInteger searchBrandsSort(id user1, id user2, void *context)
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone5) {
+    if ([AppHelper shareHelper].appCenter.isiPhone5) {
         if (self.productListArray.count > 10) {
             
             if (scrollView.contentOffset.y - _contenty > 0) {

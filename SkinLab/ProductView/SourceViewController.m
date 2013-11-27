@@ -30,7 +30,7 @@
     
     UIScrollView *scrollView = nil;
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         if (self.showNav) {
             scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - KSNHeight)];
         }else{
@@ -135,7 +135,7 @@
 
 - (void)setupNavigationController{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         if (!self.showNav) {
             UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 15, 50, 30)];
             [leftButton setImage:[UIImage imageNamed:@"透明返回"] forState:UIControlStateNormal];

@@ -10,4 +10,7 @@
 
 @interface UserCenter : NSObject
 
+@property BOOL isLogin;
+@property BOOL hasAddress;
+
 @end

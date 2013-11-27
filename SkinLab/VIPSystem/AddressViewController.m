@@ -33,7 +33,7 @@
     [super viewDidLoad];
 	self.view.backgroundColor = GrayColor;
     
-    [DataCenter shareData].hasAddress = YES;
+    [AppHelper shareHelper].userCenter.hasAddress = YES;
 }
 
 - (void)didReceiveMemoryWarning

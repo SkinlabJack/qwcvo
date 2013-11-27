@@ -98,7 +98,7 @@
         mailView.mailComposeDelegate = self;
         
         //Set the subject
-        [mailView setSubject:[NSString stringWithFormat:@"SkinLab-V%@-%@", [DataCenter shareData].appVersion, [DataCenter shareData].appMarket]];
+        [mailView setSubject:[NSString stringWithFormat:@"SkinLab-V%@-%@", [AppHelper shareHelper].appCenter.appVersion, [AppHelper shareHelper].appCenter.appMarket]];
         [mailView setToRecipients:@[@"tryseason@gmail.com"]];
         //Set the mail body
         

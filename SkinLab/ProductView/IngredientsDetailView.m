@@ -64,11 +64,11 @@
     
     [self cleanView];
     
-    if (![DataCenter isNull:dic[@"ingreName"]]) {
+    if (![IOHelper isNull:dic[@"ingreName"]]) {
         self.nameLabel.text = dic[@"ingreName"];
     }
     
-    if (![DataCenter isNull:dic[@"ingreCategory"]]) {
+    if (![IOHelper isNull:dic[@"ingreCategory"]]) {
         self.textLabel.text = dic[@"ingreCategory"];
     }
     
@@ -101,7 +101,7 @@
         }
         
     }else{
-        if (![DataCenter isNull:dic[@"ingreDes"]]) {
+        if (![IOHelper isNull:dic[@"ingreDes"]]) {
             
             NSString *ingreString = [dic[@"ingreDes"] stringByReplacingOccurrencesOfString:@"'fontsize'" withString:@"15"];
             ingreString = [ingreString stringByReplacingOccurrencesOfString:@"$$" withString:@"@@"];

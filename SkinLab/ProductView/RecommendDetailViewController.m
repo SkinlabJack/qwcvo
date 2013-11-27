@@ -62,7 +62,7 @@
 
 - (void)setupNavigationController{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4 && self.recommendDetailViewMode == RecommendDetailViewModeWithoutNav) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5 && self.recommendDetailViewMode == RecommendDetailViewModeWithoutNav) {
         
         float y = 0;
         if ([AppHelper shareHelper].appCenter.isiOS7) {
@@ -100,7 +100,7 @@
 
 - (void)setupProductImageView{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         if (self.recommendDetailViewMode == RecommendDetailViewModeWithNav) {
             
             UIScrollView *tempScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - KSNHeight)];
@@ -165,7 +165,7 @@
         _infoViewHeight = InfoHeight + 50;
     }
     
-    if ([AppHelper shareHelper].appCenter.isiOS7 && [DataCenter shareData].deviceType == DeviceTypeiPhone4 && self.recommendDetailViewMode != RecommendDetailViewModeWithNav) {
+    if ([AppHelper shareHelper].appCenter.isiOS7 && ![AppHelper shareHelper].appCenter.isiPhone5 && self.recommendDetailViewMode != RecommendDetailViewModeWithNav) {
         UIView *state = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, KSHeight)];
         state.backgroundColor = GreenColor;
         [self.view addSubview:state];
@@ -264,7 +264,7 @@
     [self setupProductIndexView];
     
 //    设置推荐产列表
-    if (![DataCenter isNull:self.productInfoDic[@"productID"]]) {
+    if (![IOHelper isNull:self.productInfoDic[@"productID"]]) {
         NSString *productID = self.productInfoDic[@"productID"];
         [self httpRequestSimilarProduct:productID page:@"1"];
     }
@@ -280,7 +280,7 @@
     
     NSMutableDictionary *productDesDic = [NSMutableDictionary dictionary];
     
-    if (![DataCenter isNull:self.productInfoDic[@"productDes"]]) {
+    if (![IOHelper isNull:self.productInfoDic[@"productDes"]]) {
         
         NSArray  *productDesArray = [self.productInfoDic[@"productDes"] componentsSeparatedByString:@"@@"];
         
@@ -347,10 +347,10 @@
                                     parameters:@{@"productID": productID}
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            
-                                           NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:[DataCenter cleanNullOfString:operation.responseString]
+                                           NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:[IOHelper cleanNullOfString:operation.responseString]
                                                                                                 options:NSJSONReadingMutableLeaves
                                                                                                   error:nil];
-                                           if (![DataCenter isNull:dataArray]) {
+                                           if (![IOHelper isNull:dataArray]) {
                                                [self setProductInfo:dataArray[0]];
                                            }
                                            
@@ -455,8 +455,8 @@
         int count = [self.productInfoDic[@"productCollect"] integerValue] + 1;
         [self.usingButton setTitle:[NSString stringWithFormat:@"在用  %d人在用", count] forState:UIControlStateNormal];
         
-        [self httpRequestAddCollect:[DataCenter shareData].deviceID productID:self.productInfoDic[@"productID"]];
-        [[DataCenter shareData] addToMyUsing:self.productInfoDic];
+        [self httpRequestAddCollect:[AppHelper shareHelper].appCenter.deviceID productID:self.productInfoDic[@"productID"]];
+        [[AppHelper shareHelper].dataCenter addToMyUsing:self.productInfoDic];
         sender.selected = !sender.selected;
     }
 }
@@ -466,8 +466,8 @@
         int count = [self.productInfoDic[@"productCollect"] integerValue] + 1;
         [self.wantButton setTitle:[NSString stringWithFormat:@"想用  %d人想用", count] forState:UIControlStateNormal];
         
-        [self httpRequestAddWishList:[DataCenter shareData].deviceID productID:self.productInfoDic[@"productID"]];
-        [[DataCenter shareData] addToMyWant:self.productInfoDic];
+        [self httpRequestAddWishList:[AppHelper shareHelper].appCenter.deviceID productID:self.productInfoDic[@"productID"]];
+        [[AppHelper shareHelper].dataCenter addToMyWant:self.productInfoDic];
         sender.selected = !sender.selected;
     }
 }
@@ -530,7 +530,7 @@
     
     float viewHeight;
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         viewHeight = kScreenHeight - KSHeight;
     }else{
         viewHeight = kScreenHeight - KSNHeight;

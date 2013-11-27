@@ -23,7 +23,7 @@
         self.scrollView.scrollEnabled = NO;
         [self addSubview:self.scrollView];
         
-        if ([DataCenter isLogin]) {
+        if ([AppHelper shareHelper].userCenter.isLogin) {
             [self createInfoView];
             [self.scrollView setContentOffset:CGPointMake(kScreenWidth * 2, 0) animated:NO];
         }else{
@@ -191,7 +191,7 @@
     [self.passField resignFirstResponder];
     [self.userField resignFirstResponder];
     [self createInfoView];
-    [DataCenter shareData].isLogin = YES;
+    [AppHelper shareHelper].userCenter.isLogin = YES;
     [self.scrollView setContentOffset:CGPointMake(kScreenWidth * 2, 0) animated:YES];
 }
 

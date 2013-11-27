@@ -25,7 +25,7 @@
     int min   = [comps minute];
     int sec   = [comps second];
     
-    NSString *name = [NSString stringWithFormat:@"%d%d%d%d%d%d%@",year,month,day,hour,min,sec,[DataCenter shareData].deviceID];
+    NSString *name = [NSString stringWithFormat:@"%d%d%d%d%d%d%@",year,month,day,hour,min,sec,[AppHelper shareHelper].appCenter.deviceID];
     return name;
 }
 

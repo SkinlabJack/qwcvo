@@ -46,7 +46,7 @@
         
         _searchViewMode = searchViewMode;
         
-        if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+        if (![AppHelper shareHelper].appCenter.isiPhone5) {
             _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
             _backGroundView.backgroundColor = GreenColor;
             [self addSubview:_backGroundView];
@@ -98,7 +98,7 @@
         [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cancelButton];
         
-        if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+        if (![AppHelper shareHelper].appCenter.isiPhone5) {
             [_cancelButton setImage:[UIImage imageNamed:@"取消按钮"] forState:UIControlStateNormal];
         }else{
             [_cancelButton setImage:[UIImage imageNamed:@"取消按钮反色"] forState:UIControlStateNormal];

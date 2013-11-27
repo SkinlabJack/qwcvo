@@ -10,4 +10,14 @@
 
 @implementation UserCenter
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _isLogin    = NO;
+        _hasAddress = NO;
+    }
+    return self;
+}
+
 @end

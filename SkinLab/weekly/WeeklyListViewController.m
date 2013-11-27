@@ -97,7 +97,7 @@
 
 - (void)setupMainView{
     
-    if ([DataCenter shareData].deviceType == DeviceTypeiPhone4) {
+    if (![AppHelper shareHelper].appCenter.isiPhone5) {
         _topViewHeight = 160;
     }else{
         _topViewHeight = 200;
@@ -234,7 +234,7 @@
     weeklyViewController.weeklyDic = dic;
     [self.navigationController pushViewController:weeklyViewController animated:YES];
     
-    [[DataCenter shareData] markWeeklyRead:dic[@"JID"]];
+    [[AppHelper shareHelper].dataCenter markWeeklyRead:dic[@"JID"]];
     [self showNewWeeklyView];
     [self httpRequestWeeklyRead:dic[@"JID"]];
     
@@ -260,7 +260,7 @@
         
         if (range.location != NSNotFound) {
             
-            if ([[DataCenter shareData] isWeeklyRead:weeklyDic[@"JID"]]) {
+            if ([[AppHelper shareHelper].dataCenter isWeeklyRead:weeklyDic[@"JID"]]) {
                 return NO;
             }else{
                 return YES;
@@ -285,10 +285,10 @@
                                            NSArray *classArray = [dataDic[@"propValue"] componentsSeparatedByString:@"@@"];
                                            self.classArray = classArray;
                                            
-//                                           if ([DataCenter shareData].weeklyArray == nil) {
+//                                           if ([AppHelper shareHelper].dataCenter.weeklyArray == nil) {
 //                                               [self httpRequestWeeklyData];
 //                                           }else{
-//                                               self.weeklyDataArray = [DataCenter shareData].weeklyArray;
+//                                               self.weeklyDataArray = [AppHelper shareHelper].dataCenter.weeklyArray;
 //                                               [self setupMainViewData:self.classArray];
 //                                               [self showNewWeeklyView];
 //                                           }
@@ -313,7 +313,7 @@
                                                                                                 options:NSJSONReadingMutableLeaves
                                                                                                   error:nil];;
                                            self.weeklyDataArray = dataArray;
-                                           [DataCenter shareData].weeklyArray = dataArray;
+                                           [AppHelper shareHelper].dataCenter.weeklyArray = dataArray;
                                            
                                            [self setupMainViewData:self.classArray];
                                            [self showNewWeeklyView];
@@ -335,7 +335,7 @@
                                                                                                 options:NSJSONReadingMutableLeaves
                                                                                                   error:nil];
                                            self.weeklyDataArray = dataArray;
-                                           [DataCenter shareData].weeklyArray = dataArray;
+                                           [AppHelper shareHelper].dataCenter.weeklyArray = dataArray;
                                            
                                            [self setupMainViewData:self.classArray];
                                            [self showNewWeeklyView];
@@ -351,7 +351,7 @@
 
 - (void)httpRequestWeeklyRead:(NSString *)journalID{
     [[SkinLabHttpClient sharedClient] postPath:[SkinLabHttpClient getSubPath:SkinLabRequertTypeWeeklyClicked]
-                                    parameters:@{@"JournalID": journalID, @"Username": [DataCenter shareData].deviceID}
+                                    parameters:@{@"JournalID": journalID, @"Username": [AppHelper shareHelper].appCenter.deviceID}
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            
                                        }
@@ -383,19 +383,19 @@
     }
     
     NSDictionary *dic   = self.classedWeeklyArray[self.classedWeeklyArray.count - 1 - indexPath.row];
-    if (![DataCenter isNull:dic[@"JournalTitle"]]) {
+    if (![IOHelper isNull:dic[@"JournalTitle"]]) {
         cell.nameLabel.text = dic[@"JournalTitle"];
     }else{
         cell.nameLabel.text = @"";
     }
     
-    if (![DataCenter isNull:dic[@"JournalSubTitle"]]) {
+    if (![IOHelper isNull:dic[@"JournalSubTitle"]]) {
         cell.infoLabel.text = dic[@"JournalSubTitle"];
     }else{
         cell.infoLabel.text = @"";
     }
     
-    if (![DataCenter isNull:dic[@"JournalCreationtime"]]) {
+    if (![IOHelper isNull:dic[@"JournalCreationtime"]]) {
         cell.dateLabel.text = [CustomerMethod createDatelabel:dic[@"JournalCreationtime"] mode:DateModeDayAndMonth];
     }else{
         cell.dateLabel.text = @"";
@@ -431,7 +431,7 @@
         
         if (range.location != NSNotFound) {
             
-            if ([[DataCenter shareData] isWeeklyRead:weeklyDic[@"JID"]]) {
+            if ([[AppHelper shareHelper].dataCenter isWeeklyRead:weeklyDic[@"JID"]]) {
                 
                 [self ArrayWithClass:weeklyClass];
                 [self.tableView reloadData];

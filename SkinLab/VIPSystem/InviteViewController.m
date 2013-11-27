@@ -31,7 +31,7 @@
     [self setupNavigationController];
 	
     ZKIButton *qrButton = [[ZKIButton alloc] initWithFrame:CGRectMake(40, 40, 240, 240)];
-    qrButton.imageView.image = [self createQRImage:@"test" withDeviceID:[DataCenter shareData].deviceID];
+    qrButton.imageView.image = [self createQRImage:@"test" withDeviceID:[AppHelper shareHelper].appCenter.deviceID];
     [self.view addSubview:qrButton];
 }
 

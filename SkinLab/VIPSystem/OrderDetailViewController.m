@@ -61,7 +61,7 @@
     [self.view addSubview:button];
     
     ZKIButton *address = [[ZKIButton alloc] initWithFrame:CGRectMake(15, 290, 290, 60)];
-    if ([DataCenter shareData].hasAddress) {
+    if ([AppHelper shareHelper].userCenter.hasAddress) {
         [address createTitleLabel:@"修改收货地址（点击修改）"];
         [self setupNavigationController];
     }else{
@@ -88,7 +88,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([DataCenter shareData].hasAddress) {
+    if ([AppHelper shareHelper].userCenter.hasAddress) {
         [self setupNavigationController];
     }
 }

@@ -58,7 +58,7 @@
         
         NSString *type;
         
-        for (NSDictionary *dic in [DataCenter shareData].testResultArray[@"Products"]) {
+        for (NSDictionary *dic in [AppHelper shareHelper].dataCenter.testResultArray[@"Products"]) {
             if ([dic[@"ProductID"] isEqualToString:self.productID]) {
                 [self setupProductView:[self getProductDataArray:dic[@"ProductType"]]];
                 type = dic[@"ProductType"];
@@ -190,7 +190,7 @@
         NSString *suggestion   = [NSString stringWithFormat:@"SkinLab建议您%@", array[i][@"Suggestion"]];
         NSString *hint         = @"";
         
-        if (![DataCenter isNull:array[i][@"Hint"]]) {
+        if (![IOHelper isNull:array[i][@"Hint"]]) {
             hint = [NSString stringWithFormat:@"Tips：%@", array[i][@"Hint"]];
         }
         
@@ -207,7 +207,7 @@
     self.recommendView.frame    = CGRectMake(0, 40, kScreenWidth, RecommendViewHeight * array.count);
     self.scrollView.contentSize = CGSizeMake(kScreenWidth, RecommendViewHeight * array.count + 40 + WeeklyViewHeight);
     
-    [self setupWeeklyView:[DataCenter shareData].testResultArray[@"Journals"] y:40 + RecommendViewHeight * array.count];
+    [self setupWeeklyView:[AppHelper shareHelper].dataCenter.testResultArray[@"Journals"] y:40 + RecommendViewHeight * array.count];
     
 }
 
@@ -317,11 +317,11 @@
 
 - (void)refreashView {
     
-    NSArray *productsArray    = [DataCenter shareData].testResultArray[@"Products"];
+    NSArray *productsArray    = [AppHelper shareHelper].dataCenter.testResultArray[@"Products"];
     NSArray *sortArray        = [productsArray sortedArrayUsingFunction:nameSort context:NULL];
     NSMutableArray *typeArray = [NSMutableArray array];
     
-    if (![DataCenter isNull:sortArray]) {
+    if (![IOHelper isNull:sortArray]) {
         if (sortArray.count > 1) {
             
             [typeArray addObject:sortArray[0][@"ProductType"]];
@@ -359,7 +359,7 @@ NSInteger nameSort(id user1, id user2, void *context)
     
     NSMutableArray *array = [NSMutableArray array];
     
-    for (NSDictionary *dic in [DataCenter shareData].testResultArray[@"Products"]) {
+    for (NSDictionary *dic in [AppHelper shareHelper].dataCenter.testResultArray[@"Products"]) {
         if ([dic[@"ProductType"] isEqualToString:type]) {
             [array addObject:dic];
         }
@@ -416,7 +416,7 @@ NSInteger nameSort(id user1, id user2, void *context)
     
     NSString *JID = [NSString stringWithFormat:@"%d", sender.tag];
     
-    for (NSDictionary *dic in [DataCenter shareData].weeklyArray) {
+    for (NSDictionary *dic in [AppHelper shareHelper].dataCenter.weeklyArray) {
         if ([dic[@"JID"] isEqualToString:JID]) {
             DLog(@"%@", dic)
             WeeklyViewController *weeklyViewController = [[WeeklyViewController alloc] initWithNibName:@"WeeklyViewController" bundle:nil];
@@ -444,10 +444,10 @@ NSInteger nameSort(id user1, id user2, void *context)
 
 - (void)questionnaireDidFinished:(NSDictionary *)dic {
     
-    [DataCenter shareData].testResultArray = dic;
+    [AppHelper shareHelper].dataCenter.testResultArray = dic;
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[DataCenter getStringWithVersion:@"test"]];
-    [[DataCenter shareData] writeToFile:dic withFileName:@"testResult.plist"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:[IOHelper getStringWithVersion:@"test"]];
+    [IOHelper writeToFileAsyn:dic withFileName:@"testResult.plist"];
     
     self.showDescription = YES;
     

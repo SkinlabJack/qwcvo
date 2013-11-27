@@ -155,7 +155,7 @@
     NSString *user = [NSString stringWithFormat:@"%@sw", notification.userInfo[@"id"]];
 
     [[SkinLabHttpClient sharedClient] postPath:[SkinLabHttpClient getSubPath:SkinLabRequertTypeSystemRegister]
-                                    parameters:@{@"username": user, @"password": [DataCenter shareData].deviceID, @"email": [NSString stringWithFormat:@"%@@gmail.com",user], @"Nickname": notification.userInfo[@"name"]}
+                                    parameters:@{@"username": user, @"password": [AppHelper shareHelper].appCenter.deviceID, @"email": [NSString stringWithFormat:@"%@@gmail.com",user], @"Nickname": notification.userInfo[@"name"]}
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            
                                            DLog(@"%@", operation.responseString)
@@ -305,10 +305,10 @@
                 }
                 
                 //Set the subject
-                [mailView setSubject:[NSString stringWithFormat:@"问题反馈-SkinLab-V%@-%@", [DataCenter shareData].appVersion, [DataCenter shareData].appMarket]];
+                [mailView setSubject:[NSString stringWithFormat:@"问题反馈-SkinLab-V%@-%@", [AppHelper shareHelper].appCenter.appVersion, [AppHelper shareHelper].appCenter.appMarket]];
                 [mailView setToRecipients:@[@"tryseason@gmail.com"]];
                 //Set the mail body
-                [mailView setMessageBody:[NSString stringWithFormat:@"From:%@", [DataCenter shareData].deviceID] isHTML:YES];
+                [mailView setMessageBody:[NSString stringWithFormat:@"From:%@", [AppHelper shareHelper].appCenter.deviceID] isHTML:YES];
                 //Display Email Composer
                 if([mailClass canSendMail]) {
                     [self presentModalViewController:mailView animated:YES];
@@ -374,7 +374,7 @@
         
         if (cell.switchButton.on) {
             [[SkinLabHttpClient sharedClient] postPath:[SkinLabHttpClient getSubPath:SkinLabRequertTypeSystemUploadToken]
-                                            parameters:@{@"UserID": [DataCenter shareData].deviceID, @"DeviceToken": [DataCenter shareData].deviceToken}
+                                            parameters:@{@"UserID": [AppHelper shareHelper].appCenter.deviceID, @"DeviceToken": [AppHelper shareHelper].appCenter.deviceToken}
                                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                    
                                                    DLog(@"%@", [NSJSONSerialization JSONObjectWithData:responseObject
@@ -387,7 +387,7 @@
                                                }];
         }else{
             [[SkinLabHttpClient sharedClient] postPath:[SkinLabHttpClient getSubPath:SkinLabRequertTypeSystemDeleteToken]
-                                            parameters:@{@"UserID": [DataCenter shareData].deviceID}
+                                            parameters:@{@"UserID": [AppHelper shareHelper].appCenter.deviceID}
                                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                    
                                                    DLog(@"%@", [NSJSONSerialization JSONObjectWithData:responseObject
